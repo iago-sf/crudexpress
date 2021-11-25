@@ -1,0 +1,19 @@
+{
+  "name": "crudexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "git": "https://github.com/iaguerreles/crudexpress.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Iago Senin",
+  "license": "ISC",
+  "dependencies": {
+    "bson": "^4.5.4",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.15"
+  }
+}
