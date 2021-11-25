@@ -32,7 +32,12 @@ function listCities(cities){
         </div>
       </div>
       <div class="col col-3">
-        <div class="text-center mt-3"><a href="/city/create" class="btn btn-info text-white w-100">Añadir ciudad</a></div>
+        <div class="text-center mt-3">
+          <a href="/city/create" class="btn btn-info text-white w-100">Añadir ciudad</a>
+        </div>
+        <div class="text-center mt-3">
+          <img src="https://cdn-icons-png.flaticon.com/512/269/269947.png" alt="cities image" class="w-100">
+        </div>
       </div>
     </div>
   </div>`;

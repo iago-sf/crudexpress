@@ -2,15 +2,17 @@ const view = require('./views')
 
 function index(){
   let content = view.header;
+  content += view.navbar;
   content += `
-  <div class="container mt-5">
-    <div class="row mt-5">
-      <div class="col col-6 mt-5">
-        <a href="/country" class="text-center btn btn-outline-success w-100">Países</a>
-      </div>
-      <div class="col col-6 mt-5">
-        <a href="/city" class="text-center btn btn-outline-success w-100">Ciudades</a>
-      </div>
+  <div class="d-flex h-100 text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <main class="px-3">
+        <h1>Bienvenido.</h1>
+        <p class="lead">Esta es la página principal del proyecto CRUD con una API con express de Iago Senin Fernandez.</p>
+        <p class="lead">
+          <a href="/countries" class="btn btn-lg btn-secondary fw-bold">Ir a países</a>
+        </p>
+      </main>
     </div>
   </div>
   `;
