@@ -10,7 +10,7 @@ function login(err){
           <input type="hidden" id="login" name="login" value="true">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your email" >
+            <input type="text" class="form-control" id="email" name="email" placeholder="Your email" >
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
@@ -44,7 +44,7 @@ function register(err){
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your email" >
+            <input type="text" class="form-control" id="email" name="email" placeholder="Your email" >
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>

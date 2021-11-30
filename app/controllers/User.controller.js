@@ -62,6 +62,11 @@ function check(req, res, next){
 
   } else {
     // comprobar email
+    var format = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    if(!req.body.email.match(format)){
+      req.body.error = 'err';
+      next();
+    }
 
     // hash de la contraseña
 
@@ -148,7 +153,7 @@ function create(req, res, next){
 function logout(req, res){
   // eliminar la cookie
   res.clearCookie('sesion');
-  
+
   res.redirect('/');
 }
 
