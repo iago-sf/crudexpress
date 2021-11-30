@@ -11,7 +11,11 @@ function listall(req, res) {
   City.find({})
     .then(cities => {
       if(cities.length){ 
-        res.status(200).send(view.listCities({cities}));
+        if(req.cookies.sesion){
+          res.status(200).send(view.listCities(true, {cities}));
+        } else {
+          res.status(200).send(view.listCities(false, {cities}));
+        }
 
       } else {
         res.status(204).send({message: 'NO CONTENT'});
@@ -44,10 +48,15 @@ function show(req, res) {
  **********************************************************/
 // Función para mostrar la pantalla de formulario de una ciudad
 function add(req, res) {
-  if(req.params.error){
-    res.status(201).send(view.createCity(true, req.body.countries));
+  if(req.cookies.sesion === undefined) {
+    res.redirect('/login');
+  
   } else {
-    res.status(201).send(view.createCity(false, req.body.countries));
+    if(req.params.error){
+      res.status(201).send(view.createCity(true, req.body.countries));
+    } else {
+      res.status(201).send(view.createCity(false, req.body.countries));
+    }
   }
 }
 
@@ -109,11 +118,16 @@ function create(req, res) {
  *                        UPDATE                          *
  **********************************************************/
 function updateCity(req, res) {
-  if(req.params.error){
-    res.status(201).send(view.updateCity(req.body.cities[0], req.body.countries, true));
-
+  if(req.cookies.sesion === undefined) {
+    res.redirect('/login');
+  
   } else {
-    res.status(201).send(view.updateCity(req.body.cities[0], req.body.countries, false));
+    if(req.params.error){
+      res.status(201).send(view.updateCity(req.body.cities[0], req.body.countries, true));
+
+    } else {
+      res.status(201).send(view.updateCity(req.body.cities[0], req.body.countries, false));
+    }
   }
 }
 

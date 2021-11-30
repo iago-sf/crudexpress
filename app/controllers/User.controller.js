@@ -82,6 +82,8 @@ function log(req, res, next){
 
   } else {
     // crear cookie
+    res.cookie('sesion' , req.body.user['email'], {expire : new Date() + 9999});
+
     res.redirect('/');
   }
 }
@@ -145,6 +147,8 @@ function create(req, res, next){
  **********************************************************/
 function logout(req, res){
   // eliminar la cookie
+  res.clearCookie('sesion');
+  
   res.redirect('/');
 }
 

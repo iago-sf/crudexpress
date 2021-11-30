@@ -1,8 +1,8 @@
 const view = require('./views')
 
-function index(){
-  let content = view.header;
-  content += view.navbar;
+function index(logged){
+  let content = view.header();
+  content += view.navbar(logged);
   content += `
   <div class="d-flex h-100 text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -17,7 +17,7 @@ function index(){
   </div>
   `;
 
-  content += view.footer;
+  content += view.footer();
   return content;
 }
 

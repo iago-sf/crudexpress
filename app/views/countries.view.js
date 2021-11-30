@@ -1,10 +1,10 @@
 const view = require('./views')
   
-function listCountries(countries){
+function listCountries(logged, countries){
   let img = countrySVG();
 
-  let content = view.header;
-  content += view.navbar;
+  let content = view.header();
+  content += view.navbar(logged);
   content += `
   <div class="container align-content-center"> 
     <div class="row justify-content-center">
@@ -44,7 +44,7 @@ function listCountries(countries){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
@@ -52,7 +52,7 @@ function listCountries(countries){
 function singleCountry(country, cities){
   let date = new Date();
 
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container align-content-center">
     <div class="row justify-content-between m-3">
@@ -160,7 +160,7 @@ function singleCountry(country, cities){
   </div>`;
 
 
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
@@ -168,7 +168,7 @@ function singleCountry(country, cities){
 function createCountry (err){
   let date = new Date();
 
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -216,7 +216,7 @@ function createCountry (err){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
@@ -249,7 +249,7 @@ function updateCountry (country, err){
       break;
   }
 
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -297,7 +297,7 @@ function updateCountry (country, err){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }

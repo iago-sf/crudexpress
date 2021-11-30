@@ -1,8 +1,8 @@
 const view = require('./views')
   
-function listCities(cities){
-  let content = view.header;
-  content += view.navbar;
+function listCities(logged, cities){
+  let content = view.header();
+  content += view.navbar(logged);
   content += `
   <div class="container align-content-center">
     <div class="row justify-content-center">
@@ -41,14 +41,14 @@ function listCities(cities){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   //console.log(content);
   return content;
 }
 
 function singleCity(city){
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container align-content-center">
     <div class="row justify-content-between m-3">
@@ -81,13 +81,13 @@ function singleCity(city){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
 
 function createCity (err, countries){
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -131,13 +131,13 @@ function createCity (err, countries){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
 
 function updateCity (city, countries, err){
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -181,7 +181,7 @@ function updateCity (city, countries, err){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }

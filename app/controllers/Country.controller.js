@@ -11,8 +11,12 @@ function listall(req, res) {
   Country.find({})
     .then(countries => {
       if(countries.length){ 
-        res.status(200).send(view.listCountries({countries}));
-
+        if(req.cookies.sesion){
+          res.status(200).send(view.listCountries(true, {countries}));
+        } else {
+          res.status(200).send(view.listCountries(false, {countries}));
+        }
+        
       } else {
         res.status(204).send({message: 'NO CONTENT'});
       }
@@ -52,10 +56,15 @@ function show(req, res) {
  **********************************************************/
 // Función para mostrar la pantalla de formulario de un país
 function add(req, res) {
-  if(req.params.error){
-    res.status(201).send(view.createCountry(true));
+  if(req.cookies.sesion === undefined) {
+    res.redirect('/login');
+  
   } else {
-    res.status(201).send(view.createCountry());
+    if(req.params.error){
+      res.status(201).send(view.createCountry(true));
+    } else {
+      res.status(201).send(view.createCountry());
+    }
   }
 }
 
@@ -117,10 +126,15 @@ function create(req, res) {
  *                        UPDATE                          *
  **********************************************************/
 function updateCountry(req, res) {
-  if(req.params.error){
-    res.status(201).send(view.updateCountry(req.body.countries[0], true));
+  if(req.cookies.sesion === undefined) {
+    res.redirect('/login');
+  
   } else {
-    res.status(201).send(view.updateCountry(req.body.countries[0]));
+    if(req.params.error){
+      res.status(201).send(view.updateCountry(req.body.countries[0], true));
+    } else {
+      res.status(201).send(view.updateCountry(req.body.countries[0]));
+    }
   }
 }
 

@@ -1,7 +1,9 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 app.use(express.urlencoded());
+app.use(cookieParser());
 
 const Index = require('./routes/index.routes');
 const City = require('./routes/city.routes');

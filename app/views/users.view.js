@@ -1,7 +1,7 @@
 const view = require('./views');
 
 function login(err){
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -26,13 +26,13 @@ function login(err){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
 
 function register(err){
-  let content = view.header;
+  let content = view.header();
   content += `
   <div class="container">
     <div class="row justify-content-center">
@@ -60,7 +60,7 @@ function register(err){
       </div>
     </div>
   </div>`;
-  content += view.footer;
+  content += view.footer();
 
   return content;
 }
