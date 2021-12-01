@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const view = require('../views/users.view');
+const jsSHA = require("jssha");
 
 /**********************************************************
  *                        FIND                            *
@@ -62,13 +63,16 @@ function check(req, res, next){
 
   } else {
     // comprobar email
-    var format = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+    var format = /[A-Za-z1-9]+@[A-Za-z1-9]+\.[A-Za-z]+/;
     if(!req.body.email.match(format)){
       req.body.error = 'err';
       next();
     }
 
     // hash de la contraseña
+    const shaObj = new jsSHA("SHA-256", "TEXT", { encoding: "UTF8" });
+    shaObj.update(req.body.password);
+    req.body.password = shaObj.getHash("HEX");
 
     data['email'] = req.body.email;
     data['password'] = req.body.password;
